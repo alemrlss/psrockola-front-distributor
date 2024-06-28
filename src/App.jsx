@@ -10,6 +10,7 @@ import { useState } from "react";
 import Login from "./views/Login/Login";
 import Layout from "./components/Layout/Layout";
 import ProtectedRoute from "./components/Routes/ProtectedRoute";
+import Transactions from "./views/Transactions/Transactions";
 
 const App = () => {
   const [sessionExpired, setSessionExpired] = useState(false);
@@ -40,9 +41,11 @@ const App = () => {
           <Route path="/" element={<ProtectedRoute />}>
             <Route element={<Layout />}>
               <Route path="dashboard" element={<h2>dashboard </h2>} />
+              <Route path="transactions" element={<Transactions />}></Route>
+
               <Route
                 path="*"
-                element={<Navigate to="/companies/dashboard" />}
+                element={<Navigate to="/dashboard" />}
               />{" "}
             </Route>
           </Route>
