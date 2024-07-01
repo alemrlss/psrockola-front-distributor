@@ -53,7 +53,7 @@ const DashboardDistributor = () => {
     };
 
     fetchData();
-  }, [auth, user.membership.expiration]);
+  }, [auth]);
 
   const closeModal = () => {
     setIsModalOpen(false);

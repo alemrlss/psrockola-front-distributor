@@ -13,6 +13,13 @@ import ProtectedRoute from "./components/Routes/ProtectedRoute";
 import Transactions from "./views/Transactions/Transactions";
 import DashboardDistributor from "./views/Dashboard/Dashboard";
 import CreateSubcompany from "./views/Subcompanies/Create/CreateSubcompany";
+import ListSubcompanies from "./views/Subcompanies/List/ListSubcompany";
+import Subscriptions from "./views/Subscriptions/Subscriptions";
+import CancelDistributor from "./views/Subscriptions/Cancel";
+import SubscriptionsSuccess from "./views/Subscriptions/Success";
+import RockobitsSuccess from "./views/Rockobits/Success";
+import RockobitsBuy from "./views/Rockobits/Buy";
+import TransferToSubCompany from "./views/Rockobits/TransferToSubcompany";
 
 const App = () => {
   const [sessionExpired, setSessionExpired] = useState(false);
@@ -43,10 +50,35 @@ const App = () => {
           <Route path="/" element={<ProtectedRoute />}>
             <Route element={<Layout />}>
               <Route path="dashboard" element={<DashboardDistributor />} />
+              <Route
+                path="subscriptions/get"
+                element={<Subscriptions />}
+              ></Route>
+              <Route
+                path="subscriptions/cancel"
+                element={<CancelDistributor />}
+              ></Route>
+              <Route
+                path="subscriptions/success"
+                element={<SubscriptionsSuccess />}
+              ></Route>
+              <Route path="rockobits/buy" element={<RockobitsBuy />}></Route>
+              <Route
+                path="rockobits/transfer"
+                element={<TransferToSubCompany />}
+              ></Route>
+              <Route
+                path="rockobits/success"
+                element={<RockobitsSuccess />}
+              ></Route>
               <Route path="transactions" element={<Transactions />}></Route>
               <Route
                 path="subcompanies/create-subcompany"
                 element={<CreateSubcompany />}
+              ></Route>
+              <Route
+                path="subcompanies/list-subcompanies"
+                element={<ListSubcompanies />}
               ></Route>
               <Route path="*" element={<Navigate to="/dashboard" />} />{" "}
             </Route>

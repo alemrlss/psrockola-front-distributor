@@ -1,6 +1,9 @@
 import { Box, Modal, Tab, Tabs, IconButton } from "@mui/material";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import ChangePassword from "../Settings/ChangePassword";
+import UpdatePhoto from "../Settings/UpdatePhoto";
+import UpdateUserDistributor from "../Settings/UpdateUser";
 //import ChangePasswordSubcompany from "../../Settings/Subcompany/ChangePasswordSubcompany";
 //import UpdatePhotoSubcompany from "../../Settings/Subcompany/UpdatePhotoSubcompany";
 
@@ -67,7 +70,9 @@ function ModalDistributorEdit({ openModal, handleCloseModal, user }) {
               <Tab label="Update profile photo" variant="contained" />
             </Tabs>
 
-         
+            {tabValue === 0 && <UpdateUserDistributor user={user} />}
+            {tabValue === 1 && <ChangePassword user={user} />}
+            {tabValue === 2 && <UpdatePhoto user={user} />}
           </Box>
         </Box>
       </Box>

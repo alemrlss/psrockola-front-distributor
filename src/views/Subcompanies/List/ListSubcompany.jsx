@@ -16,8 +16,9 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import api from "../../../api/api";
+import ModalEditWithTabs from "../../../components/Subcompany/List/ModalEdit";
 
-function ListCompany() {
+function ListSubcompanies() {
   const user = useSelector((state) => state.auth.user);
   const [subcompanies, setSubcompanies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -207,8 +208,23 @@ function ListCompany() {
       ) : (
         <div>No subcompanies found.</div>
       )}
+
+      <ModalEditWithTabs
+        editModalOpen={editModalOpen}
+        handleCloseEditModal={handleCloseEditModal}
+        editedSubcompany={editedSubcompany}
+        handleInputChange={handleInputChange}
+        handleSaveChanges={handleSaveChanges}
+        loadingState={loadingState}
+        handleChangePassword={handleChangePassword}
+        previewImage={previewImage}
+        setPreviewImage={setPreviewImage}
+        photoFile={photoFile}
+        setPhotoFile={setPhotoFile}
+        setSubcompanies={setSubcompanies}
+      />
     </div>
   );
 }
 
-export default ListCompany;
+export default ListSubcompanies;
