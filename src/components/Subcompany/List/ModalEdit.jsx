@@ -8,8 +8,10 @@ import {
   Typography,
   Button,
   Avatar,
+  IconButton,
+  InputAdornment,
 } from "@mui/material";
-import { CloudUpload } from "@mui/icons-material";
+import { CloudUpload, Visibility, VisibilityOff } from "@mui/icons-material";
 import apiFormData from "../../../api/apiFormData";
 
 function TabPanel(props) {
@@ -57,8 +59,9 @@ function ModalEditWithTabs({
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
   const [error, setError] = useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -76,12 +79,9 @@ function ModalEditWithTabs({
       return;
     }
 
-    console.log(photoFile);
-
     const formData = new FormData();
     formData.append("photo", photoFile);
 
-    console.log(editedSubcompany);
     try {
       const response = await apiFormData.patch(
         `/subcompany/update-photo/${editedSubcompany.id}`,
@@ -136,7 +136,6 @@ function ModalEditWithTabs({
     }
   };
 
-  console.log(editedSubcompany);
   return (
     <Modal
       open={editModalOpen}
@@ -213,7 +212,7 @@ function ModalEditWithTabs({
         <TabPanel value={tabIndex} index={1}>
           <TextField
             label="New Password"
-            type="password"
+            type={showNewPassword ? "text" : "password"}
             value={newPassword}
             onChange={(e) => {
               setNewPassword(e.target.value);
@@ -221,10 +220,22 @@ function ModalEditWithTabs({
             }}
             fullWidth
             sx={{ marginBottom: 2 }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={() => setShowNewPassword(!showNewPassword)}
+                    edge="end"
+                  >
+                    {showNewPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <TextField
             label="Confirm Password"
-            type="password"
+            type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
             onChange={(e) => {
               setConfirmPassword(e.target.value);
@@ -232,6 +243,18 @@ function ModalEditWithTabs({
             }}
             fullWidth
             sx={{ marginBottom: 2 }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    edge="end"
+                  >
+                    {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           {errorMessage && (
             <Typography color="error" variant="body2" sx={{ marginBottom: 2 }}>
