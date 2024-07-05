@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { loginDistributor } from "../../features/authSlice";
 
 function Login() {
@@ -16,6 +20,7 @@ function Login() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
   const goTo = useNavigate();
@@ -23,7 +28,7 @@ function Login() {
 
   useEffect(() => {
     dispatch({ type: "auth/clearError" });
-  }, []); 
+  }, [dispatch]); 
 
   const handleInputChange = (e) => {
     setError("");
@@ -60,6 +65,14 @@ function Login() {
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   return (
@@ -108,7 +121,21 @@ function Login() {
               fullWidth
               size="small"
               margin="normal"
-              type="password"
+              type={showPassword ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
             <Button
               type="submit"

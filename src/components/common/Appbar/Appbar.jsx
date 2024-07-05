@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import ModalDistributorEdit from "./ModalEditDistributor";
+import { formatDate } from "../../../utils/formatDate";
 
 function AppBarDistributor({ drawerWidth, handleDrawerToggle }) {
   const { t } = useTranslation();
@@ -116,9 +117,9 @@ function AppBarDistributor({ drawerWidth, handleDrawerToggle }) {
                 }}
               >
                 {user.membership.expiration
-                  ? `${t("psrockola_appbar_expire")} ${
+                  ? `${t("psrockola_appbar_expire")} ${formatDate(
                       user.membership.expiration
-                    } - Accounts: ${user.membership.type}`
+                    )} - Accounts: ${user.membership.type}`
                   : "No membership"}
               </Typography>
             </Box>
