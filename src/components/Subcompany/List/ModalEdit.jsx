@@ -126,6 +126,10 @@ function ModalEditWithTabs({
   };
 
   const handlePasswordChange = () => {
+
+
+    if(newPassword.length < 8) return setErrorMessage("Password must be at least 8 characters long");
+
     if (newPassword === confirmPassword) {
       handleChangePassword(newPassword);
       setNewPassword("");
