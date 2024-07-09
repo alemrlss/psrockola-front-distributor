@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Tabs, Tab, Paper } from "@mui/material";
 import PayTransactions from "./Pay/PayTransactions";
 import RockobitsTransactionsDistributor from "./Rockobits/RockobitsTransactions";
+import { useTranslation } from "react-i18next";
 function Transactions() {
   // Estado para controlar la pestaña seleccionada
   const [selectedTab, setSelectedTab] = useState(0);
+  const {t} = useTranslation();
 
   // Manejador de cambio de pestaña
   const handleChange = (event, newValue) => {
@@ -22,7 +24,7 @@ function Transactions() {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab label="Pay" />
+          <Tab label={t("view_transactions_pay")} />
           <Tab label="Rockobits" />
         </Tabs>
       </Paper>

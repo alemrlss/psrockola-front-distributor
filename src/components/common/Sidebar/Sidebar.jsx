@@ -154,7 +154,7 @@ function SidebarDistributor({ handleDrawerToggle }) {
         <SidebarDistributorLogout
           item={{
             id: "logout",
-            translationKey: "menu_logout",
+            translationKey: "view_logout",
             icon: <LogoutIcon />,
             subItems: null,
           }}

@@ -17,6 +17,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import api from "../../../api/api";
 import ModalEditWithTabs from "../../../components/Subcompany/List/ModalEdit";
+import { useTranslation } from "react-i18next";
 
 function ListSubcompanies() {
   const user = useSelector((state) => state.auth.user);
@@ -34,6 +35,7 @@ function ListSubcompanies() {
 
   const [previewImage, setPreviewImage] = useState(null);
   const [photoFile, setPhotoFile] = useState(null); // Almacena el archivo de foto seleccionado
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchSubcompanies = async () => {
@@ -143,19 +145,25 @@ function ListSubcompanies() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Subcompanies</h2>
+      <h2 className="text-2xl font-bold mb-4">
+        {t("view_subcompanies_list_title")}
+      </h2>
       {subcompanies.length > 0 ? (
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow sx={{ backgroundColor: "#f5f5f5" }}>
-                <TableCell>Photo</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Address</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>State</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell>{t("view_subcompanies_list_table_photo")}</TableCell>
+                <TableCell>{t("view_subcompanies_list_table_name")}</TableCell>
+                <TableCell>{t("view_subcompanies_list_table_email")}</TableCell>
+                <TableCell>
+                  {t("view_subcompanies_list_table_address")}
+                </TableCell>
+                <TableCell>{t("view_subcompanies_list_table_phone")}</TableCell>
+                <TableCell>{t("view_subcompanies_list_table_state")}</TableCell>
+                <TableCell>
+                  {t("view_subcompanies_list_table_actions")}
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -178,9 +186,15 @@ function ListSubcompanies() {
                       inputProps={{ "aria-label": "Without label" }}
                       disabled={loadingState} // Deshabilitar el select si está cargando
                     >
-                      <MenuItem value={0}>Desactivado</MenuItem>
-                      <MenuItem value={1}>Activo</MenuItem>
-                      <MenuItem value={2}>Baneado</MenuItem>
+                      <MenuItem value={0}>
+                        {t("view_subcompanies_list_states_inactive")}
+                      </MenuItem>
+                      <MenuItem value={1}>
+                        {t("view_subcompanies_list_states_active")}
+                      </MenuItem>
+                      <MenuItem value={2}>
+                        {t("view_subcompanies_list_states_banned")}
+                      </MenuItem>
                     </Select>
                   </TableCell>
                   <TableCell>
@@ -206,7 +220,7 @@ function ListSubcompanies() {
           </Table>
         </TableContainer>
       ) : (
-        <div>No subcompanies found.</div>
+        <div>{t("view_subcompanies_list_table_notfound")}</div>
       )}
 
       <ModalEditWithTabs

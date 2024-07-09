@@ -64,18 +64,18 @@ function CreateSubcompanies() {
   return (
     <div>
       <h2 className="mx-auto max-w-lg  text-center text-2xl mb-4">
-        You have a limit of{" "}
+        {t("view_subcompanies_create_limit_part_1")}{" "}
         <b>{getBenefitsDistributorMembership(user.membership.type).accounts}</b>{" "}
-        Accounts
+        {t("view_subcompanies_create_limit_part_2")}
       </h2>
       <div className="max-w-lg mx-auto p-6 bg-gray-100 rounded-md shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">
-          Create SubCompany{" "}
+          {t("view_subcompanies_create_title")}
         </h2>
 
         <form className="grid grid-cols-2 gap-4" onSubmit={handleSubmit}>
           <TextField
-            label={"Name"}
+            label={t("view_subcompanies_create_name")}
             name="name"
             variant="outlined"
             fullWidth
@@ -83,7 +83,7 @@ function CreateSubcompanies() {
             onChange={handleChange}
           />
           <TextField
-            label={"Email"}
+            label={t("view_subcompanies_create_email")}
             name="email"
             variant="outlined"
             fullWidth
@@ -91,7 +91,7 @@ function CreateSubcompanies() {
             onChange={handleChange}
           />
           <TextField
-            label={"Password"}
+            label={t("view_subcompanies_create_password")}
             name="password"
             type="password"
             variant="outlined"
@@ -101,7 +101,7 @@ function CreateSubcompanies() {
           />
 
           <TextField
-            label={"Address"}
+            label={t("view_subcompanies_create_address")}
             name="address"
             variant="outlined"
             fullWidth
@@ -109,7 +109,7 @@ function CreateSubcompanies() {
             onChange={handleChange}
           />
           <TextField
-            label={"Phone"}
+            label={t("view_subcompanies_create_phone")}
             name="phone"
             variant="outlined"
             fullWidth
@@ -117,7 +117,7 @@ function CreateSubcompanies() {
             onChange={handleChange}
           />
           <TextField
-            label={"Postal Code"}
+            label={t("view_subcompanies_create_postalCode")}
             name="postalCode"
             variant="outlined"
             fullWidth

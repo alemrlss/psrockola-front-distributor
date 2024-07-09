@@ -9,9 +9,11 @@ import { useDispatch } from "react-redux";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../../features/authSlice";
+import { useTranslation } from "react-i18next";
 
 function SidebarLogout({ item }) {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -19,7 +21,6 @@ function SidebarLogout({ item }) {
     dispatch(logout());
     setOpen(false);
     navigate("/login");
-
   };
 
   return (
@@ -52,7 +53,7 @@ function SidebarLogout({ item }) {
           </ListItemIcon>
           <ListItemText
             sx={{ color: "white", ml: 0 }}
-            primary={"Cerrar sesión"}
+            primary={t("view_logout") || "Logout"}
           />
         </Box>
       </ListItemButton>
@@ -77,7 +78,9 @@ function SidebarLogout({ item }) {
             textAlign: "center",
           }}
         >
-          <p className="text-xl font-extrabold">Are you sure you want to log out?</p>
+          <p className="text-xl font-extrabold">
+            Are you sure you want to log out?
+          </p>
           <Divider
             sx={{
               marginTop: "30px",

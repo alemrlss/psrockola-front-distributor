@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { CloudUpload, Visibility, VisibilityOff } from "@mui/icons-material";
 import apiFormData from "../../../api/apiFormData";
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,6 +63,7 @@ function ModalEditWithTabs({
   const [error, setError] = useState("");
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { t } = useTranslation();
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -126,9 +128,8 @@ function ModalEditWithTabs({
   };
 
   const handlePasswordChange = () => {
-
-
-    if(newPassword.length < 8) return setErrorMessage("Password must be at least 8 characters long");
+    if (newPassword.length < 8)
+      return setErrorMessage("Password must be at least 8 characters long");
 
     if (newPassword === confirmPassword) {
       handleChangePassword(newPassword);
@@ -156,13 +157,19 @@ function ModalEditWithTabs({
           onChange={handleTabChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Edit Info" {...a11yProps(0)} />
-          <Tab label="Change Password" {...a11yProps(1)} />
-          <Tab label="Change Photo" {...a11yProps(2)} />
+          <Tab label={t("view_subcompanies_list_editInfo")} {...a11yProps(0)} />
+          <Tab
+            label={t("view_subcompanies_list_change_paswword")}
+            {...a11yProps(1)}
+          />
+          <Tab
+            label={t("view_subcompanies_list_change_photo")}
+            {...a11yProps(2)}
+          />
         </Tabs>
         <TabPanel value={tabIndex} index={0}>
           <TextField
-            label="Name"
+            label={t("view_subcompanies_list_editInfo_name")}
             name="name"
             value={editedSubcompany.name}
             onChange={handleInputChange}
@@ -170,7 +177,7 @@ function ModalEditWithTabs({
             sx={{ marginBottom: 2 }}
           />
           <TextField
-            label="Email"
+            label={t("view_subcompanies_list_editInfo_email")}
             name="email"
             value={editedSubcompany.email}
             onChange={handleInputChange}
@@ -178,7 +185,7 @@ function ModalEditWithTabs({
             sx={{ marginBottom: 2 }}
           />
           <TextField
-            label="Phone"
+            label={t("view_subcompanies_list_editInfo_phone")}
             name="phone"
             value={editedSubcompany.phone}
             onChange={handleInputChange}
@@ -186,7 +193,7 @@ function ModalEditWithTabs({
             sx={{ marginBottom: 2 }}
           />
           <TextField
-            label="Address"
+            label={t("view_subcompanies_list_editInfo_address")}
             name="address"
             value={editedSubcompany.address}
             onChange={handleInputChange}
@@ -200,7 +207,9 @@ function ModalEditWithTabs({
               color="primary"
               disabled={loadingState}
             >
-              {loadingState ? "Saving..." : "Save Changes"}
+              {loadingState
+                ? t("view_subcompanies_list_editInfo_saving")
+                : t("view_subcompanies_list_editInfo_save")}
             </Button>
             <Button
               onClick={handleCloseEditModal}
@@ -209,13 +218,13 @@ function ModalEditWithTabs({
               disabled={loadingState}
               sx={{ marginLeft: 2 }}
             >
-              Close
+              {t("view_subcompanies_list_cancel")}
             </Button>
           </div>
         </TabPanel>
         <TabPanel value={tabIndex} index={1}>
           <TextField
-            label="New Password"
+            label={t("view_subcompanies_list_change_paswword_password")}
             type={showNewPassword ? "text" : "password"}
             value={newPassword}
             onChange={(e) => {
@@ -238,7 +247,7 @@ function ModalEditWithTabs({
             }}
           />
           <TextField
-            label="Confirm Password"
+            label={t("view_subcompanies_list_change_paswword_password_confirm")}
             type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
             onChange={(e) => {
@@ -272,7 +281,11 @@ function ModalEditWithTabs({
               color="primary"
               disabled={loadingState}
             >
-              {loadingState ? "Saving..." : "Change Password"}
+              {loadingState
+                ? t(
+                    "view_subcompanies_list_change_paswword_password_button_changing"
+                  )
+                : t("view_subcompanies_list_change_paswword_password_button")}
             </Button>
             <Button
               onClick={handleCloseEditModal}
@@ -288,7 +301,7 @@ function ModalEditWithTabs({
         <TabPanel value={tabIndex} index={2}>
           <Box sx={{ mt: 2 }}>
             <Typography variant="h6" sx={{ mb: 2 }}>
-              Change Profile Photo
+              {t("view_subcompanies_list_change_photo_title")}
             </Typography>
 
             <Avatar
@@ -313,7 +326,7 @@ function ModalEditWithTabs({
                 },
               }}
             >
-              Upload{" "}
+              {t("view_subcompanies_list_change_photo_select")}
               <input
                 type="file"
                 accept="image/*"
@@ -328,7 +341,7 @@ function ModalEditWithTabs({
               sx={{ mt: 2, width: "100%" }}
               onClick={handleSavePhoto}
             >
-              Change
+              {t("view_subcompanies_list_change_photo_upload")}
             </Button>
 
             {error && (

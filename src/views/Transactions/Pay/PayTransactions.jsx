@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import api from "../../../api/api";
+import { useTranslation } from "react-i18next";
 
 function PayTransactions() {
   const user = useSelector((state) => state.auth.user);
@@ -22,6 +23,7 @@ function PayTransactions() {
   const [take, setTake] = useState(20);
   const [totalCount, setTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchTransactions();
@@ -64,7 +66,7 @@ function PayTransactions() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -92,7 +94,7 @@ function PayTransactions() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -119,7 +121,7 @@ function PayTransactions() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -146,7 +148,7 @@ function PayTransactions() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -174,7 +176,7 @@ function PayTransactions() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -203,7 +205,7 @@ function PayTransactions() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -276,7 +278,7 @@ function PayTransactions() {
         >
           <CircularProgress size={120} />
           <Typography variant="h6" sx={{ marginTop: "16px", fontSize: "32px" }}>
-            Loading..{" "}
+            {t("view_transactions_pay_loading")}
           </Typography>
         </Box>
       ) : (
@@ -298,21 +300,21 @@ function PayTransactions() {
                     textAlign: "center",
                   }}
                 >
-                  Date
+                  {t("view_transactions_table_date")}
                 </TableCell>
                 <TableCell
                   sx={{
                     textAlign: "center",
                   }}
                 >
-                  Type
+                  {t("view_transactions_table_type")}
                 </TableCell>
                 <TableCell
                   sx={{
                     textAlign: "center",
                   }}
                 >
-                  Amount
+                  {t("view_transactions_table_amount")}
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -321,7 +323,7 @@ function PayTransactions() {
                 <TableRow>
                   <TableCell colSpan={4} sx={{ textAlign: "center" }}>
                     <Typography variant="body1">
-                      No transactions found
+                      {t("view_transactions_pay_no_transactions")}
                     </Typography>
                   </TableCell>
                 </TableRow>

@@ -17,6 +17,7 @@ import {
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { useSelector } from "react-redux";
 import api from "../../../api/api";
+import { useTranslation } from "react-i18next";
 
 function RockobitsTransactionsDistributor() {
   const user = useSelector((state) => state.auth.user);
@@ -28,6 +29,8 @@ function RockobitsTransactionsDistributor() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVoucher, setSelectedVoucher] = useState(null);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchTransactions();
@@ -74,7 +77,7 @@ function RockobitsTransactionsDistributor() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -113,7 +116,7 @@ function RockobitsTransactionsDistributor() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -160,7 +163,7 @@ function RockobitsTransactionsDistributor() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -201,7 +204,7 @@ function RockobitsTransactionsDistributor() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -240,7 +243,7 @@ function RockobitsTransactionsDistributor() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
 
           <TableCell
@@ -279,7 +282,7 @@ function RockobitsTransactionsDistributor() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
 
           <TableCell
@@ -319,7 +322,7 @@ function RockobitsTransactionsDistributor() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -357,7 +360,7 @@ function RockobitsTransactionsDistributor() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -397,7 +400,7 @@ function RockobitsTransactionsDistributor() {
               textAlign: "center",
             }}
           >
-            {(transaction.createdAt)}
+            {transaction.createdAt}
           </TableCell>
           <TableCell
             sx={{
@@ -474,28 +477,28 @@ function RockobitsTransactionsDistributor() {
                     textAlign: "center",
                   }}
                 >
-                  Date
+                  {t("view_transactions_table_date")}
                 </TableCell>
                 <TableCell
                   sx={{
                     textAlign: "center",
                   }}
                 >
-                  Type
+                  {t("view_transactions_table_type")}
                 </TableCell>
                 <TableCell
                   sx={{
                     textAlign: "center",
                   }}
                 >
-                  Amount
+                  {t("view_transactions_table_amount")}
                 </TableCell>
                 <TableCell
                   sx={{
                     textAlign: "center",
                   }}
                 >
-                  User
+                  {t("view_transactions_table_user")}
                 </TableCell>
               </TableRow>
             </TableHead>
