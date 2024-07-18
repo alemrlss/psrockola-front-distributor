@@ -235,6 +235,7 @@ i18n.use(initReactI18next).init({
         view_transactions_table_type: "Type",
         view_transactions_table_amount: "Amount",
         view_transactions_table_user: "User",
+        
       },
     },
     es: {
