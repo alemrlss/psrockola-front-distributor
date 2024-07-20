@@ -136,7 +136,7 @@ function CreateSubcompanies() {
                 <div className="flex">
                   <CircularProgress size={24} color="inherit" />
                   <span className="ml-2">
-                    {t("view_employees_create_loading")}
+                    {t("view_subcompany_create_loading")}
                   </span>
                 </div>
               ) : (

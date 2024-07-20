@@ -235,7 +235,7 @@ i18n.use(initReactI18next).init({
         view_transactions_table_type: "Type",
         view_transactions_table_amount: "Amount",
         view_transactions_table_user: "User",
-        
+        view_subcompany_create_loading: "Creating subcompany..",
       },
     },
     es: {
@@ -468,6 +468,7 @@ i18n.use(initReactI18next).init({
         view_transactions_table_type: "Tipo",
         view_transactions_table_amount: "Monto",
         view_transactions_table_user: "Usuario",
+        view_subcompany_create_loading: "Creando subempresa..",
       },
     },
     pt: {
@@ -700,7 +701,9 @@ i18n.use(initReactI18next).init({
         view_transactions_table_type: "Tipo",
         view_transactions_table_amount: "Quantidade",
         view_transactions_table_user: "Usuário",
+        view_subcompany_create_loading: "Criando subempresa..",
       },
+
     },
   },
   lng: storedLanguage,
